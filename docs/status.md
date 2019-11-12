@@ -3,6 +3,8 @@ layout: default
 title:  Status
 ---
 
+# Page Title
+
 - Video Presentation
 - Project Summary
 - Approach
