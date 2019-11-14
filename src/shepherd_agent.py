@@ -16,6 +16,11 @@
 
 import random, json
 from math import sqrt
+import sys
+if sys.version_info[0] == 2:
+	import Tkinter as tk
+else:
+	import tkinter as tk
 
 class Shepherd():
     def __init__(self, alpha=0.3, gamma=1, n=1):

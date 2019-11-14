@@ -43,6 +43,7 @@ class SheepHerderEnvironment(gym.Env):
         self.stageSize = (25, 25)
         self.yardSize = (3, 3)
         self.yardPos = (0, 0)
+
     def _take_action(self, action):
         pass
 
@@ -53,6 +54,7 @@ class SheepHerderEnvironment(gym.Env):
     def inYard(self, pos):
         return ((self.yardPos[0] - self.yardSize[0]/2 < pos[0] < self.yardPos[0] + self.yardSize[0]/2)
             and (self.yardPos[1] - self.yardSize[1]/2 < pos[1] < self.yardPos[1] + self.yardSize[1]/2))
+
     def inAttractionRange(self, obj1, obj2, dist):
         return (obj1[0] - obj2[0])**2 + (obj1[1] - obj2[1])**2 <= dist**2
 
@@ -70,6 +72,7 @@ class SheepHerderEnvironment(gym.Env):
         if pos[1] > bound["t"]:
             pos = (pos[0], bound["t"])
         return pos
+
     def step(self, action):
 
         # agent position update
@@ -115,6 +118,7 @@ class SheepHerderEnvironment(gym.Env):
                        0.5*Xcanvas*self.yardSize[0]/self.stageSize[0],\
                       -0.5*Ycanvas*self.yardSize[1]/self.stageSize[1],\
                        0.5*Ycanvas*self.yardSize[1]/self.stageSize[1]
+
             yard = rendering.FilledPolygon([(l,b), (l,t), (r,t), (r,b)])
             yard.set_color(.0,1.0,.0)
             self.yardtrans = rendering.Transform()
@@ -153,8 +157,6 @@ class SheepHerderEnvironment(gym.Env):
             self.sheepherd_trans[i].set_translation(x_sheep, y_sheep)
 
         return self.viewer.render(return_rgb_array = mode=='rgb_array')
-
-
 
     def close(self):
         if self.viewer:

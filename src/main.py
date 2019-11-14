@@ -18,7 +18,34 @@ from shepherd_agent import Shepherd
 import functools
 print = functools.partial(print, flush=True)
 
+import json
+if sys.version_info[0] == 2:
+    import Tkinter as tk
+else:
+    import tkinter as tk
 
+CANVAS_BORDER = 20
+CANVAS_WIDTH = 600
+CANVAS_HEIGHT = 600
+ARENA_WIDTH = 60
+ARENA_HEIGHT = 60
+
+def canvasX(x):
+    return (CANVAS_BORDER/2) + (0.5+x/float(ARENA_WIDTH))*(CANVAS_WIDTH-CANVAS_BORDER)
+
+def canvasY(y):
+    return (CANVAS_BORDER/2) + (0.5+y/float(ARENA_HEIGHT))*(CANVAS_HEIGHT-CANVAS_BORDER)
+
+def drawEntity(entities):
+    canvas.delete("all")
+    for e in entities:
+        # draw sheep
+        if e["name"] == "Sheep":
+            canvas.create_oval(canvasX(e["x"])-4, canvasY(e["z"])-4, canvasX(e["x"])+4, canvasY(e["z"])+4, fill="#0000ff")
+        # draw agent
+        elif e["name"] == "Jesus":
+            canvas.create_oval(canvasX(e["x"])-8, canvasY(e["z"])-8, canvasX(e["x"])+8, canvasY(e["z"])+8, fill="#ff0000")
+    root.update()
 
 if __name__ == "__main__":
         
@@ -34,6 +61,13 @@ if __name__ == "__main__":
     if agent_host.receivedArgument("help"):
         print(agent_host.getUsage())
         exit(0)
+
+    # create tkinker window frame
+    root = tk.Tk()
+    root.wm_title("SheepHerd")
+    canvas = tk.Canvas(root, width=CANVAS_WIDTH, height=CANVAS_HEIGHT, borderwidth=0, highlightthickness=0, bg="white")
+    canvas.pack()
+    root.update()
 
     shepherd = Shepherd()
     runs = 1
@@ -68,6 +102,13 @@ if __name__ == "__main__":
             shepherd.run(agent_host)
             time.sleep(0.1)
             world_state = agent_host.getWorldState()
+
+            # Add a tkinter canvas to draw
+            if world_state.number_of_observations_since_last_state > 0:
+                msg = world_state.observations[-1].text
+                ob = json.loads(msg)
+                if "entities" in ob:
+                    drawEntity(ob["entities"])
         
         shepherd.get_current_state(agent_host)
         print()
