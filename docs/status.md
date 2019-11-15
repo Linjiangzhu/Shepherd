@@ -3,7 +3,11 @@ layout: default
 title:  Status
 ---
 
-# Page Title
+### Video
+
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=Cm_OTNAjWvg
+" target="_blank"><img src="http://img.youtube.com/vi/Cm_OTNAjWvg/0.jpg" 
+alt="Status Report Sample" width="240" height="180" border="10" /></a>
 
 ### Project Summary
 
