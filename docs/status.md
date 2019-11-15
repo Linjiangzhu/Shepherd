@@ -17,7 +17,7 @@ $$
 Q(S_t, A_t)\leftarrow Q(S_t, A_t) + \alpha[R_{t+1} + \gamma\max_a Q(S_{t+1},a)- Q(s_t, A_t)]
 $$
 
-where $\alpha$ is the learning rate as we learn from the lecture. In a more intuitive way to implement our code, we have:
+where $$\alpha$$ is the learning rate as we learn from the lecture. In a more intuitive way to implement our code, we have:
 
 
 ```
