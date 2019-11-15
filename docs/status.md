@@ -85,7 +85,7 @@ def update_q_table(self, tau, S, A, R, T): # got from assignment 2
         self.q_table[curr_s][curr_a] = old_q + self.alpha * (G - old_q)
 ```
 
-The agent will follow a $\epsilon$-greedy policy to choose action from the q-table with the best q-value. The long-term reward will gradually degenerate as step goes: 
+The agent will follow a $$\epsilon$$-greedy policy to choose action from the q-table with the best q-value. The long-term reward will gradually degenerate as step goes: 
 
 ```python
     def choose_action(self,state,possible_actions):
