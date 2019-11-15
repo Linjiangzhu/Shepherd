@@ -20,7 +20,7 @@ $$
 where $\alpha$ is the learning rate as we learn from the lecture. In a more intuitive way to implement our code, we have:
 
 
-```{r, tidy=FALSE, eval=FALSE, highlight=FALSE }
+```
 For each epoch:
 	Initialize state S
 	While the state is not end state or ecceed time limit:
