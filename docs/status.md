@@ -5,9 +5,7 @@ title:  Status
 
 ### Video
 
-<a href="http://www.youtube.com/watch?feature=player_embedded&v=Cm_OTNAjWvg
-" target="_blank"><img src="http://img.youtube.com/vi/Cm_OTNAjWvg/0.jpg" 
-alt="Status Report Sample" width="240" height="180" border="10" /></a>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Cm_OTNAjWvg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ### Project Summary
 
