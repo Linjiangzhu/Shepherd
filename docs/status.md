@@ -114,6 +114,22 @@ The agent will follow a $$\epsilon$$-greedy policy to choose action from the q-t
             action = random.choice(sorted_acts[0][1])
         return action    
 ```
+Through several test of runs, we foudn that setting the random action rate at 0.12 will help the agent figure out how to save the sheep faster.
+It needs 50 runs for epsilon at 0.2 and only 30 runs for epsilon at 0.12.
+
+```python
+def __init__(self, alpha=0.3, gamma=1, n=1):
+    """Constructing an RL agent.
+    Args
+        alpha:  <float>  learning rate      (default = 0.3)
+        gamma:  <float>  value decay rate   (default = 1)
+        n:      <int>    number of back steps to update (default = 1)
+    """
+    # q-learning variables
+    self.epsilon = 0.12 # chance of taking a random action instead of the best
+    self.q_table = {}
+    self.n, self.alpha, self.gamma = n, alpha, gamma
+```
 
 ### Evaluation
 
