@@ -5,7 +5,7 @@ title:  Status
 
 ### Video
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/Cm_OTNAjWvg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/fbcMfVnTvbs" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ### Project Summary
 
@@ -59,8 +59,9 @@ We simply reward for the sheep herded and punish for not reaching the yard.
 
 ```python
 rewards_ledger = {
-    "per sheep herded": 1,
-    "all sheep herded": 100,
+    "sheep are near": 4,
+    "some sheep herded": 25,
+    "all sheep herded": 10000,
     "no sheep herded": -100,
     "pen not reached": -150
 }
@@ -116,7 +117,10 @@ The agent will follow a $$\epsilon$$-greedy policy to choose action from the q-t
 
 ### Evaluation
 
-- Not yet we have any data recorded. Here should be some graph like the training session information.
+<img src="traning-result.png" alt="traning result" width="500">
+This is the first 100 session in one run. The blue line is the reward of each sesion. The orange line is the average reward, which is the total
+rewared at the current sesoin divided by the number of seesions have run. The average reward increases as we train our model.Generally, the agent
+improve its performance as time goes by. Although the agent's decision is not always stable, for now the agent has reach the goal of status report.
 
 ### Remaining Goals and Challenges
 
@@ -134,7 +138,7 @@ The agent will follow a $$\epsilon$$-greedy policy to choose action from the q-t
 
 - **Algorithm improvement**
 
-  Since the observation value of the environment is continuous, a 60X60 arena can create a great amount of data as we store all possible states in Q-table.  In the future, we will implement a deep reinforcement learning method with neural network to efficiently train the agent.
+  Since the observation value of the environment is continuous, a 60X60 arena can create a great amount of data as we store all possible states in Q-table.  In the future, we will implement a deep reinforcement learning method with neural network to efficiently train the agent. 
 
 ### Resources Used
 

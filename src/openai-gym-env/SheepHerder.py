@@ -21,9 +21,10 @@ ACTION_MAP = {
     8: (-1,  0)
 }
 
-STAGE_SIZE = 100
-SHEEP_NUM = 5
-YARD_SIZE = 20
+STAGE_WIDTH = 60
+STAGE_HEIGHT = 60
+SHEEP_NUM = 2
+YARD_SIZE = 10
 DEFAULT_POSITION = (0, 0)
 CANVAS_WIDTH = 600
 CANVAS_HEIGHT = 600
@@ -37,11 +38,17 @@ class SheepHerderEnvironment(gym.Env):
         self.viewer = None
         self.pos = (0, 0)
         self.action_space = spaces.Discrete(9)
+        self.observation_space = spaces.Dict({
+            "agent": spaces.Box(low=np.array([-STAGE_WIDTH/2, -STAGE_HEIGHT/2]),
+                                high=np.array([STAGE_WIDTH/2,STAGE_HEIGHT/2]),
+                                dtype=np.float32),
+            "sheep": spaces.Box(low=min(-STAGE_WIDTH, -STAGE_HEIGHT), high=max(STAGE_WIDTH, STAGE_HEIGHT), shape=(5,2), dtype=np.float32)
+        })
         self.frame = 0
         self.agentVel = 4.3/60
         self.sheepVel = 4.19/60
-        self.stageSize = (25, 25)
-        self.yardSize = (3, 3)
+        self.stageSize = (STAGE_WIDTH, STAGE_HEIGHT)
+        self.yardSize = (10, 10)
         self.yardPos = (0, 0)
 
     def _take_action(self, action):
@@ -105,6 +112,7 @@ class SheepHerderEnvironment(gym.Env):
     def reset(self):
         self.pos = DEFAULT_POSITION
         self.sheepList = (np.random.rand(self.sheepNum, 2) - 0.5) * self.stageSize
+        
 
     def render(self, mode="human", close=False):
         Xcanvas = CANVAS_WIDTH
