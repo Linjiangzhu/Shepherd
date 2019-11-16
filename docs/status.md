@@ -134,6 +134,7 @@ def __init__(self, alpha=0.3, gamma=1, n=1):
 ### Evaluation
 
 <img src="traning-result.png" alt="traning result" width="500">
+<br>
 This is the first 100 session in one run. The blue line is the reward of each sesion. The orange line is the average reward, which is the total
 rewared at the current sesoin divided by the number of seesions have run. The average reward increases as we train our model.Generally, the agent
 improve its performance as time goes by. Although the agent's decision is not always stable, for now the agent has reach the goal of status report.
